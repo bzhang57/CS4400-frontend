@@ -8,9 +8,24 @@
 
 	<body>
 		<center><form>
-			<p>Email: <input type="text" name="emailInput"></p>
-			<p>Password: <input type="password" name="passwordInput"></p>
-			<button id="loginButton" type="submit">Login</button>
+			<p>Username: <input type="text" id="username" required></p>
+			<p>Password: <input type="password" id="password" required></p>
+			<button id="loginButton" type="submit" onclick="login()">Login</button>
+			<script type="text/javascript">
+			document.getElementById('loginButton').onclick = function() {
+				var username = document.getElementById('username').value;
+				var password = document.getElementById('password').value;
+				document.write(username);
+				//should return a User object, tuple, index for userType because want to check against user type
+				if (username == 'owner') {
+					location.href="HomescreenOwner.html";
+				} else if (username == 'visitor') {
+					location.href="HomescreenVisitor.html";
+				} else if (username == 'admin') {
+					location.href="HomescreenAdmin.html";
+				}
+			}
+			</script>
 			<p><button id="newOwnerRegistrationButton" type="button">New Owner Registration</button>
 			<button id="newVisitorRegistrationButton" type="button">New Visitor Registration</button></p>
 		</form></center>
