@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<title>Owner Homescreen</title>
+		<center><h1>Welcome {Owner}</h1></center>
+		<style type="text/css">
+			.search {
+				float: left;
+				margin-left: 20px;
+				/*margin-right: 50px;*/
+			}
+
+			.ownerActions {
+				float: left;
+				margin-left: 100px;
+			}
+
+			.logout {
+				float: left;
+				margin-left: 100px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<center><h2>Your Properties:</h2></center>
+		<br>
+		<center><table border="1">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Address</th>
+					<th>City</th>
+					<th>Zip</th>
+					<th>Size</th>
+					<th>Type</th>
+					<th>Public</th>
+					<th>Commerical</th>
+					<th>ID</th>
+					<th>isValid</th>
+					<th>Visits</th>
+					<th>Avg. Rating</th>
+				</tr>
+			</thead>
+		</table></center>
+		<br>
+		<div class="search">
+			<center><p><select>
+				<option selected>Search by...</option>
+				<option value="propertyName">Name</option>
+				<option value="city">City</option>
+				<option value="propertyType">Type</option>
+				<option value="visits">Visits</option>
+			</select></p>
+			<br>
+			<p><input type="text" name="searchInput" placeholder="Search Term"></p>
+			<p><button id="searchPropertiesButton" type="button">Search Properties</button></p></center>
+		</div>
+		<div class="ownerActions">
+			<center><p><button id="managePropertyButton" type="button">Manage Property</button></p>
+			<p><button id="addPropertyButton" type="button">Add Property</button></p>
+			<p><button id="viewOtherPropertiesButton" type="button">View Other Properties</button></p></center>
+			<script type="text/javascript">
+				document.getElementById('viewOtherPropertiesButton').onclick = function() {
+					location.href= "OtherOwnerPropertiesScreen.html";
+				};
+			</script>
+		</div>
+		<div class="logout">
+			<p><button id="logout" type="button">Logout</button></p>
+		</div>
+	</body>
+
+</html>
