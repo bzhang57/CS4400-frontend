@@ -54,17 +54,33 @@
         <script type="text/javascript">
             document.getElementById('logout').onclick = function() {
                 console.log("yeet")
-
+/*
                 $.ajax({
                     type: "GET",
                     url: "http://localhost:5000/logout",
                     dataType: "text",
-                    success: function() {
-                        location.href="Login.html";
+                    success: function(text) {
+                        //location.href="Login.html";
                         console.log("yay");
+                        console.log(text);
                     }
 
                 });
+*/
+                $.ajax({
+                        type: "GET",
+                        url: "http://localhost:5000/get_session",
+                        dataType: "text",
+                        success: function(text) {
+                            console.log("yay");
+                            //localStorage.setItem( "session", text);
+                            console.log(text);
+                        },
+                        complete: function(msg) {
+                            console.log(msg)
+                        }
+
+                    });
 
             }
 
