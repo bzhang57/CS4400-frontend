@@ -27,6 +27,7 @@
 				function login() {
 					var usernameInput = document.getElementById('username').value;
 					var passwordInput = document.getElementById('password').value;
+					var response = '';
 					console.log("yeet")
 					console.log(usernameInput)
 					console.log(passwordInput)
@@ -38,22 +39,25 @@
 						type: "POST",
 						url: "http://localhost:5000/login",
 				        data: JSON.stringify(login_info),
+				        async: false,
 				        contentType: "application/json;charset=utf-8",
 				        dataType: "text",
-				        success: function() {
+				        success: function(text) {
 				        	console.log("yay");
+				        	console.log(text);
+				        	response = text;
+				        	console.log(response);
 				        },
 				        complete: function(msg) {
 				        	console.log(msg)
 				        }
 				    });
-				    console.log(this.responseText);
-					//should return a User object, tuple, index for userType because want to check against user type
-					if (usernameInput == 'owner') {
+					//response is the userType
+					if (response == 'owner') {
 						location.href="HomescreenOwner.html";
-					} else if (usernameInput == 'visitor') {
+					} else if (response == 'visitor') {
 						location.href="HomescreenVisitor.html";
-					} else if (usernameInput == 'admin') {
+					} else if (response == 'admin') {
 						location.href="HomescreenAdmin.html";
 					}
 				}
