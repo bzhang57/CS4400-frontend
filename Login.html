@@ -35,6 +35,8 @@
 				          email: usernameInput,
 				          password: passwordInput
 				        };
+
+
 					$.ajax({
 						type: "POST",
 						url: "http://localhost:5000/login",
@@ -47,11 +49,48 @@
 				        	console.log(text);
 				        	response = text;
 				        	console.log(response);
+				        	
+				        	$.ajax({
+		                        type: "GET",
+		                        url: "http://localhost:5000/get_session",
+		                        dataType: "text",
+		                        success: function(text) {
+		                            console.log("yay");
+		                            //localStorage.setItem( "session", text);
+		                            console.log(text);
+		                        },
+		                        complete: function(msg) {
+		                        	console.log("yay");
+		                            console.log(msg)
+		                            //console.log(text);
+		                        }
+
+                    		});
 				        },
 				        complete: function(msg) {
 				        	console.log(msg)
 				        }
 				    });
+/*
+				    $.ajax({
+                        type: "GET",
+                        url: "http://localhost:5000/get_session",
+                        dataType: "text",
+                        success: function(text) {
+                            console.log("yay");
+                            //localStorage.setItem( "session", text);
+                            console.log(text);
+                        },
+                        complete: function(msg) {
+                        	console.log("yay");
+                            console.log(msg)
+                            //console.log(text);
+                        }
+
+                    });
+*/
+				    
+
 					//response is the userType
 					if (response == 'owner') {
 						location.href="HomescreenOwner.html";
@@ -69,6 +108,25 @@
 				function navToNewVisitorRegistration() {
 					location.href="VisitorRegistration.html";
 				}
+				/*
+				window.onbeforeunload = function() {
+					console.log("tryna get da session")
+				    $.ajax({
+	                    type: "GET",
+	                    url: "http://localhost:5000/get_session",
+	                    dataType: "text",
+	                    success: function(text) {
+	                        console.log("yay");
+	                        localStorage.setItem( "session", text);
+	                        console.log(text);
+	                    },
+	                    complete: function(msg) {
+				        	console.log(msg)
+				        }
+
+                    });
+				}
+*/
 			</script>
 		</center>
 	</body>
