@@ -10,16 +10,17 @@
 
 
 	<body>
-		<center><form>
-		<p>Email*: <input type="text" name="emailInput"></p>
-		<p>Username*: <input type="text" name="username"></p>
-		<p>Password*: <input type="password" name="passwordInput"></p>
-		<p>Confirm Password*: <input type="password" name=confirmPassword"confirmPasswordInput"></p>
-		<p>Property Name*: <input type="text" name="propertyName"></p>
-		<p>Street Address*: <input type="text" name="streetAddress"></p>
-		<p>City*: <input type="text" name="city"> 
-			Zip*: <input type="text" name="zip">
-			Acres*:<input type="text" name="acres"></p>
+		
+		<center><form id="ownerRegister" name="ownerRegister">
+		<p>Email*: <input type="text" id="emailInput" name="emailInput" required></p>
+		<p>Username*: <input type="text" id="username"></p>
+		<p>Password*: <input type="password" id="passwordInput"></p>
+		<p>Confirm Password*: <input type="password" id="confirmPasswordInput"></p>
+		<p>Property Name*: <input type="text" id="propertyName"></p>
+		<p>Street Address*: <input type="text" id="streetAddress"></p>
+		<p>City*: <input type="text" id="city"> 
+			Zip*: <input type="text" id="zip">
+			Acres*:<input type="text" id="acres"></p>
 		<p>Property Type*: <select id="propertyType" onChange="check()">
 		  	<option value="farm">Farm</option>
 		 	<option value="garden">Garden</option>
@@ -52,7 +53,7 @@
 		  	<option value="commercialYes">yes</option>
 		 	<option value="commercialNo">no</option>
 		</select></p>
-		<p><button id="registerOwner" type="button">Register Owner</button>
+		<p><button id="registerOwner" type="button" onclick="checkFields()">Register Owner</button>
 		<button id="cancel" type="button">Cancel</button></p>
 		</form></center>
 		<p id="demo"></p>
@@ -68,8 +69,24 @@
 			    	document.getElementById("animalLabel").innerHTML = "Animals:*:"
 			    	document.getElementById("animalType").style.display = "block";
 			    }
-			    
-			    
+			  
+			}
+
+			function checkFields() {
+				var fields = ["emailInput", "username", "passwordInput", "confirmPasswordInput", "propertyName", "streetAddress", "city", "zip", "acres"]
+				var i, l = fields.length;
+				var fieldname;
+				for (i = 0; i < l; i++) {
+					fieldname = fields[i];
+					console.log(document.forms["ownerRegister"][fieldname].value)
+					if (document.forms["ownerRegister"][fieldname].value === "") {
+					  alert(fieldname + " can not be empty");
+					  return false;
+					}
+				}
+				if (docuemnt.getElementById(id).value == "") {
+					alert("Fill it out");
+				}
 			}
 		</script>
 	</body>
